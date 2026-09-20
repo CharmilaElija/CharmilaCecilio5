@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+<title>Para o amor da minha vida ❤️</title>
+<style>
+/* =====================================
+   CONFIGURAÇÕES GERAIS
+===================================== */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+    color: white;
+    /*
+       PAISAGEM DE FUNDO
+       Coloque uma imagem chamada:
+       paisagem.jpg
+       na mesma pasta deste arquivo.
+    */
+    background-image:
+        linear-gradient(
+            rgba(35, 0, 8, 0.38),
+            rgba(35, 0, 8, 0.65)
+        ),
+        url("paisagem.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+/* =====================================
+   CONTAINER
+===================================== */
+.container {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+/* =====================================
+   CARTA FECHADA
+===================================== */
+.envelope {
+    cursor: pointer;
+    animation:
+        flutuar 2.5s ease-in-out infinite;
+}
+.envelope-icon {
+    width: 270px;
+    height: 180px;
+    background:
+        rgba(255, 250, 250, 0.92);
+    border-radius: 10px;
+    position: relative;
+    margin: auto;
+    box-shadow:
+        0 15px 45px
+        rgba(0, 0, 0, 0.45);
+}
+/* Aba da carta */
+.envelope-icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left:
+        135px solid transparent;
+    border-right:
+        135px solid transparent;
+    border-top:
+        100px solid
+        rgba(125, 0, 25, 0.78);
+}
+/* Coração */
+.heart {
+    position: absolute;
+    z-index: 5;
+    top: 62px;
+    left: 50%;
+    transform:
+        translateX(-50%);
+    font-size: 50px;
+    filter:
+        drop-shadow(
+            0 3px 5px
+            rgba(0,0,0,0.25)
+        );
+}
+.title {
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow:
+        0 2px 8px
+        rgba(0,0,0,0.65);
+}
+.click {
+    margin-top: 12px;
+    font-size: 16px;
+    text-shadow:
+        0 2px 7px
+        rgba(0,0,0,0.70);
+}
+/* =====================================
+   CARTA ABERTA
+===================================== */
+.letter {
+    display: none;
+    width: 100%;
+    animation:
+        aparecer 1.2s ease;
+}
+.paper {
+    /*
+       VERMELHO TRANSPARENTE
+    */
+    background:
+        rgba(55, 0, 10, 0.72);
+    backdrop-filter:
+        blur(9px);
+    -webkit-backdrop-filter:
+        blur(9px);
+    padding:
+        28px 22px;
+    border-radius: 18px;
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,0.50);
+    text-align: left;
+}
+/* =====================================
+   TÍTULO
+===================================== */
+.paper h1 {
+    text-align: center;
+    font-size: 29px;
+    color: white;
+    margin-top: 0;
+    text-shadow:
+        0 2px 8px
+        rgba(0,0,0,0.40);
+}
+.subtitle {
+    text-align: center;
+    font-size: 18px;
+    color:
+        #ffdadd;
+    margin-bottom: 15px;
+}
+.date {
+    text-align: center;
+    font-size: 13px;
+    color:
+        #ffc4cc;
+    margin-bottom: 20px;
+}
+/* =====================================
+   FOTO DE VOCÊS
+===================================== */
+.foto-container {
+    width: 100%;
+    text-align: center;
+    margin:
+        10px 0 25px;
+}
+.foto-container img {
+    width: 100%;
+    max-width: 330px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    border:
+        2px solid
+        rgba(255,255,255,0.35);
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,0.40);
+}
+/* =====================================
+   TEXTO DA CARTA
+===================================== */
+.paper p {
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 15px;
+}
+/* Frases em destaque */
+.destaque {
+    text-align: center;
+    font-size: 21px;
+    font-weight: bold;
+    color:
+        #ffbec6;
+    margin:
+        23px 0;
+    text-shadow:
+        0 2px 6px
+        rgba(0,0,0,0.30);
+}
+/* =====================================
+   ASSINATURA
+===================================== */
+.assinatura {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.7;
+}
+/* =====================================
+   PLAYER DE MÚSICA
+===================================== */
+.music-box {
+    margin-top: 28px;
+    padding: 17px;
+    background:
+        rgba(100, 0, 20, 0.55);
+    border-radius: 15px;
+    text-align: center;
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+}
+.music-title {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+.music-button {
+    border: none;
+    background:
+        rgba(150, 0, 30, 0.90);
+    color: white;
+    padding:
+        12px 25px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,0.25);
+}
+.music-button:active {
+    transform:
+        scale(0.96);
+}
+.volume {
+    width: 100%;
+    margin-top: 15px;
+    accent-color:
+        #b3002d;
+}
+/* =====================================
+   CORAÇÕES
+===================================== */
+.coracao {
+    position: fixed;
+    top: -30px;
+    font-size: 18px;
+    pointer-events: none;
+    animation:
+        cair 5s linear forwards;
+    z-index: 100;
+}
+@keyframes cair {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+        opacity: 0;
+    }
+}
+/* =====================================
+   ANIMAÇÕES
+===================================== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+@keyframes flutuar {
+    0%, 100% {
+        transform:
+            translateY(0);
+    }
+    50% {
+        transform:
+            translateY(-9px);
+    }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<!-- =====================================
+     PRIMEIRA TELA — CARTA
+===================================== -->
+<div
+    class="envelope"
+    id="envelope"
+    onclick="abrirCarta()"
+>
+    <div class="envelope-icon">
+        <div class="heart">
+            ❤️
+        </div>
+    </div>
+    <div class="title">
+        Para o amor da minha vida
+    </div>
+    <div class="click">
+        💌 Toque na carta para abrir
+    </div>
+</div>
+<!-- =====================================
+     CARTA ABERTA
+===================================== -->
+<div
+    class="letter"
+    id="letter"
+>
+<div class="paper">
+<h1>
+    Para ti, meu amor ❤️
+</h1>
+<div class="subtitle">
+    9 meses de nós...
+</div>
+<div class="date">
+    Desde 21 de dezembro de 2025
+</div>
+<!-- =====================================
+     FOTO DE VOCÊS
+===================================== -->
+<div class="foto-container">
+    <img
+        src="foto.jpg"
+        alt="Nossa foto"
+    >
+</div>
+<!-- =====================================
+     DECLARAÇÃO
+===================================== -->
+<p>
+    Meu amor,
+</p>
+<p>
+    Hoje completamos 9 meses e eu só quero
+    lembrar-te de uma coisa:
+</p>
+<div class="destaque">
+    Eu continuo te escolhendo. ❤️
+</div>
+<p>
+    Desde o dia
+    <strong>
+        21 de dezembro de 2025
+    </strong>,
+    quando eu disse SIM, começamos a
+    escrever a nossa história.
+</p>
+<p>
+    Amar-te à distância nem sempre é fácil.
+    Existem abraços que faltam, saudades que
+    apertam e momentos em que tudo o que eu
+    queria era estar ao teu lado.
+</p>
+<p>
+    Mas mesmo longe, continuas perto do
+    meu coração.
+</p>
+<p>
+    Nestes 9 meses tivemos dias bons e
+    dias difíceis, mas eu continuo aqui,
+    escolhendo a nossa história e tudo
+    aquilo que ainda podemos viver juntos.
+</p>
+<div class="destaque">
+    E se eu pudesse voltar àquele dia...
+    <br><br>
+    Eu diria SIM outra vez. ❤️
+</div>
+<p>
+    Feliz 9 meses, meu amor.
+    Que esta seja apenas uma parte da nossa
+    história e que ainda tenhamos muitos
+    capítulos para escrever juntos.
+</p>
+<div class="assinatura">
+    Com todo o meu amor,
+    <br>
+    Charmila ❤️
+</div>
+<!-- =====================================
+     MÚSICA
+===================================== -->
+<div class="music-box">
+    <div class="music-title">
+        🎵 Uma música para nós
+    </div>
+    <button
+        class="music-button"
+        id="musicButton"
+        onclick="controlarMusica()"
+    >
+        ▶️ Tocar música
+    </button>
+    <input
+        class="volume"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.7"
+        onchange="alterarVolume(this.value)"
+    >
+</div>
+</div>
+</div>
+</div>
+<!-- =====================================
+     ARQUIVO DA MÚSICA
+===================================== -->
+<audio
+    id="musica"
+    loop
+>
+    <source
+        src="musica.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+<script>
+/* =====================================
+   ELEMENTOS
+===================================== */
+const musica =
+    document.getElementById("musica");
+const botao =
+    document.getElementById("musicButton");
+musica.volume = 0.7;
+/* =====================================
+   ABRIR CARTA
+===================================== */
+function abrirCarta() {
+    document.getElementById("envelope")
+        .style.display = "none";
+    document.getElementById("letter")
+        .style.display = "block";
+    /*
+       Tenta iniciar a música.
+       Se o navegador bloquear,
+       o botão continuará disponível.
+    */
+    musica.play()
+        .then(() => {
+            botao.innerHTML =
+                "⏸️ Pausar música";
+        })
+        .catch(() => {
+            botao.innerHTML =
+                "▶️ Tocar música";
+        });
+    criarCoracoes();
+}
+/* =====================================
+   CONTROLE DA MÚSICA
+===================================== */
+function controlarMusica() {
+    if (musica.paused) {
+        musica.play();
+        botao.innerHTML =
+            "⏸️ Pausar música";
+    }
+    else {
+        musica.pause();
+        botao.innerHTML =
+            "▶️ Tocar música";
+    }
+}
+/* =====================================
+   VOLUME
+===================================== */
+function alterarVolume(valor) {
+    musica.volume = valor;
+}
+/* =====================================
+   CORAÇÕES CAINDO
+===================================== */
+function criarCoracoes() {
+    setInterval(() => {
+        const coracao =
+            document.createElement("div");
+        coracao.classList.add(
+            "coracao"
+        );
+        coracao.innerHTML =
+            "❤️";
+        coracao.style.left =
+            Math.random() * 100 + "vw";
+        coracao.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+        document.body.appendChild(
+            coracao
+        );
+        setTimeout(() => {
+            coracao.remove();
+        }, 6000);
+    }, 900);
+}
+</script>
+</body>
+</html>
